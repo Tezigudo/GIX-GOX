@@ -9,6 +9,7 @@ export default function App() {
       <Text>GIX GOX</Text>
       <StatusBar style="auto" />
     </View>
+
     </SafeAreaProvider>
   );
 }
