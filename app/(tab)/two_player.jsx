@@ -1,11 +1,9 @@
 import { Text, View } from "react-native";
 
-
-export default function Game(){
+export default function TwoPlayer(){
     return (
         <View>
-            <Text>GAME</Text>
+            <Text>2 PLAYER</Text>
         </View>
     )
 }
-

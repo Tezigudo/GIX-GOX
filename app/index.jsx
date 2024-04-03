@@ -10,6 +10,11 @@ export default function App() {
         <Text style={styles.buttonText}>play</Text>
       </TouchableOpacity>
       </Link>
+      <Link href="/_sitemap" asChild>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>sitemap</Text>
+      </TouchableOpacity>
+      </Link>
     </View>
   );
 
