@@ -7,14 +7,14 @@ export default function App() {
       <Text style={styles.title}>GIX GOK</Text>
       <Link href="/menu" asChild>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>play</Text>
+        <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
       </Link>
-      <Link href="/_sitemap" asChild>
+      {/* <Link href="/_sitemap" asChild>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>sitemap</Text>
+        <Text style={styles.buttonText}>Debug</Text>
       </TouchableOpacity>
-      </Link>
+      </Link> */}
     </View>
   );
 
@@ -25,20 +25,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingTop: 30
+    paddingTop: 30,
   },
   title: {
     fontSize: 45,
     fontWeight: 'bold',
     marginBottom: 100,
+    marginTop: "10%",
   },
   button: {
     backgroundColor: '#ddd',
     padding: 10,
     borderRadius: 5,
-    marginVertical: 10,
+    marginTop: "20%",
+    padding: 10,
+    width: 200,
+    alignItems: 'center',
+    borderRadius:102
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 30,
   },
 });
