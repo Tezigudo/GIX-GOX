@@ -1,18 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Link } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GIX GOK</Text>
+      <Link href="/menu" asChild>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>1 player</Text>
+        <Text style={styles.buttonText}>play</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>2 player</Text>
-      </TouchableOpacity>
+      </Link>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({

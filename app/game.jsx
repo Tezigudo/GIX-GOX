@@ -1,9 +1,11 @@
 import { View } from "react-native";
 
-export function game(){
+
+export function Game({mode, difficulty}){
     return (
         <View>
-            <Text>GIX GOX</Text>
+            <Text>GAME</Text>
         </View>
     )
 }
+

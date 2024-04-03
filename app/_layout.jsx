@@ -6,8 +6,8 @@ const RootLayout = ()=>{
             <Stack.Screen name="index" options={
                 {title: "menu"}
             } />
-            <Stack.Screen name="[missing]" options={
-                {title: "404"}
+            <Stack.Screen name="game" options={
+                {title: "Play Game"}
             } />
         </Stack>
     )
