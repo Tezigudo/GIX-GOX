@@ -2,18 +2,20 @@ import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function Menu() {
+export default function ChooseDifficulty() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GIX GOK</Text>
-      <Link href="/(tab)/singleplayer/choose_difficulty" asChild>
+      <Link href="/(tab)/singleplayer/easy" asChild>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>1 player</Text>
+        <Text style={styles.buttonText}>Easy</Text>
       </TouchableOpacity>
       </Link>
+      <Link href="/(tab)/singleplayer/hard" asChild>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>2 player</Text>
+        <Text style={styles.buttonText}>Hard</Text>
       </TouchableOpacity>
+      </Link>
     </View>
   );
 }
