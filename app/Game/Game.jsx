@@ -14,7 +14,7 @@ export default function Game(){
     const [winner, SetWinner] = useState("");
 
 
-    useEffect(checkWinner, [board])
+    useEffect(() => checkWinner(), [board])
 
     const onPress = (rowIndex, cellIndex) => {
         if(board[rowIndex][cellIndex] == "" && !winner){
@@ -54,6 +54,8 @@ export default function Game(){
         SetWinner("");
 
     }
+
+
 
 
 
