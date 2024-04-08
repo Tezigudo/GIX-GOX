@@ -1,49 +1,19 @@
-import { Link } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import MainMenu from "./screens/MainMenu";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>GIX GOK</Text>
-      <Link href="/menu" asChild>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Play</Text>
-      </TouchableOpacity>
-      </Link>
-      <Link href="/_sitemap" asChild>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Debug</Text>
-      </TouchableOpacity>
-      </Link>
-    </View>
-  );
+const Stack = createStackNavigator();
 
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingTop: 30,
-  },
-  title: {
-    fontSize: 45,
-    fontWeight: 'bold',
-    marginBottom: 100,
-    marginTop: "10%",
-  },
-  button: {
-    backgroundColor: '#ddd',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: "20%",
-    padding: 10,
-    width: 200,
-    alignItems: 'center',
-    borderRadius:102
-  },
-  buttonText: {
-    fontSize: 30,
-  },
-});
+export default function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={MainMenu} />
+        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Player" component={Player} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+};

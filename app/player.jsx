@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Text, View } from 'react-native'
 
-class Player extends Component{
+export class Player extends Component{
     constructor(){
         super()
         this.state = {
@@ -19,6 +18,3 @@ class Player extends Component{
         )
     }
 }
-
-
-export default Player
