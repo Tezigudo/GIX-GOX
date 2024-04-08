@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
-
+import { Alert, Text, View } from "react-native";
+import { Board } from "./Board";
 
 export default function Game(){
     const initailBoard = [
@@ -13,11 +13,13 @@ export default function Game(){
     const [player, SetPlayer] = useState("X");
     const [winner, SetWinner] = useState("");
 
+    useEffect(() => {
+        checkWinner();
+        checkTie();
+    }, [board]);
 
-    useEffect(() => checkWinner(), [board])
-
-    const onPress = (rowIndex, cellIndex) => {
-        if(board[rowIndex][cellIndex] == "" && !winner){
+    const handlePress = (rowIndex, cellIndex) => {
+        if(board[rowIndex][cellIndex] === "" && !winner){
             const newBoard = [...board];
             newBoard[rowIndex][cellIndex] = player;
             SetBoard(newBoard);
@@ -27,42 +29,76 @@ export default function Game(){
 
     const checkWinner = () =>{
         for(let i=0; i<3; i++){
-            if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ""){
+            if(board[i][0] === board[i][1] && board[i][1] === board[i][2] && board[i][0] !== ""){
                 SetWinner(board[i][0]);
-                break;
+                return;
             }
         }
-    }
 
-    for (let i = 0; i < 3; i++) {
-        if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != "") {
-            SetWinner(board[0][i]);
-            break;
+        for (let i = 0; i < 3; i++) {
+            if (board[0][i] === board[1][i] && board[1][i] === board[2][i] && board[0][i] !== "") {
+                SetWinner(board[0][i]);
+                return;
+            }
+        }
+
+        if (board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== "") {
+            SetWinner(board[0][0]);
+            return;
+        } else if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== ""){
+            SetWinner(board[0][2]);
+            return;
         }
     }
 
-    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "") {
-        SetWinner(board[0][0]);
-    }else if(board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ""){
-        SetWinner(board[0][2]);
-
+    const checkTie = () => {
+        const isBoardFull = board.every(row => row.every(cell => cell !== ""));
+        if (isBoardFull && !winner) {
+            Alert.alert("It's a tie", " ", [{
+                text: "Play Again",
+                onPress: resetBoard
+            }]);
+        }
     }
 
-    const resetBoaard = () => {
+    const resetBoard = () => {
         SetBoard(initailBoard);
         SetPlayer("X");
         SetWinner("");
-
     }
 
-
-
-
+    useEffect(() => {
+        if(winner){
+            Alert.alert(`Player ${winner} wons!`, ' ', [{
+                text: "Play Again",
+                onPress: resetBoard
+            }]);
+        }
+    }, [winner])
 
     return (
-        <View>
-            <Text>GAME</Text>
+        <View style={styles.container}>
+            <Text>Player {player}'s turn</Text>
+            <Board onPress={handlePress} board={board} />
         </View>
     )
 }
 
+
+const styles = {
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    row: {
+        flexDirection: "row"
+    },
+    cell: {
+        width: 100,
+        height: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 1
+    }
+}
