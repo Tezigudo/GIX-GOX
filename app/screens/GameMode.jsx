@@ -8,8 +8,8 @@ export default function GameMode({navigation}) {
       <Text style={styles.title}>GIX GOK</Text>
       <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate("Difficulty")}>
         <Text style={styles.buttonText}>1 player</Text>
-      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate("PlayerNames", {mode:Mode.TWOPLAYER})}>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate("PlayerNames", {mode:Mode.TWOPLAYER})}>
         <Text style={styles.buttonText}>2 player</Text>
       </TouchableOpacity>
     </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 200,
     alignItems: 'center',
-    borderRadius:102
+    borderRadius:102,
   },
   buttonText: {
     fontSize: 30,

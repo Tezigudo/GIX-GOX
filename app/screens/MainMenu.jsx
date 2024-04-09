@@ -46,5 +46,3 @@ const styles = StyleSheet.create({
   },
 });
 
-
-// stack game, player2, player1

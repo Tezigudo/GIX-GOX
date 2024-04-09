@@ -6,12 +6,14 @@ import Game from "./Game/Game";
 import PlayerNames from "./screens/PlayerNames";
 import ChooseDifficulty from "./screens/ChooseDifficulty";
 import GameMode from "./screens/GameMode";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Stack = createStackNavigator();
 
 
 export default function App(){
   return(
+    <SafeAreaProvider>
     <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={MainMenu} />
@@ -21,5 +23,6 @@ export default function App(){
         <Stack.Screen name="Game" component={Game} />
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaProvider>
   )
 };
