@@ -5,7 +5,7 @@ export default function MainMenu({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GIX GOK</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navagate("GameMode")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("GameMode")}>
         <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
       <Link href="/_sitemap" asChild>

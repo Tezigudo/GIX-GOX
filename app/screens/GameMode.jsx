@@ -1,4 +1,3 @@
-import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Mode } from '../enum/Mode';

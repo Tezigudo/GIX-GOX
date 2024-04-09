@@ -1,6 +1,4 @@
 import React from "react";
-
-import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Mode } from "../enum/Mode";
 import { Difficulty } from "../enum/Difficulty";

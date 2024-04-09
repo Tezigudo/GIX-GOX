@@ -12,14 +12,13 @@ const Stack = createStackNavigator();
 
 export default function App(){
   return(
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={MainMenu} />
         <Stack.Screen name="GameMode" component={GameMode} />
         <Stack.Screen name="Difficulty" component={ChooseDifficulty} />
         <Stack.Screen name="PlayerNames" component={PlayerNames} />
         <Stack.Screen name="Game" component={Game} />
-
       </Stack.Navigator>
     </NavigationContainer>
   )
