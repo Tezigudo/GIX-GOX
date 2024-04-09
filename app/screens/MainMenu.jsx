@@ -1,15 +1,13 @@
 import { Link } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function MainMenu() {
+export default function MainMenu({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GIX GOK</Text>
-      <Link href="/menu" asChild>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navagate("GameMode")}>
         <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
-      </Link>
       <Link href="/_sitemap" asChild>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Debug</Text>

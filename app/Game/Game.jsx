@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { Board } from "./Board";
+import { Mode } from "../enum/Mode";
 
-export default function Game(){
+export default function Game({route}){
+    const { mode, difficulty, player1Name, player2Name } = route.params;
+
     const initailBoard = [
         ["", "", ""],
         ["", "", ""],
@@ -10,7 +13,7 @@ export default function Game(){
     ]
 
     const [board, SetBoard] = useState(initailBoard);
-    const [player, SetPlayer] = useState("X");
+    const [currentPlayer, setCurrentPlayer] = useState("X");
     const [winner, SetWinner] = useState("");
 
     useEffect(() => {
@@ -21,9 +24,9 @@ export default function Game(){
     const handlePress = (rowIndex, cellIndex) => {
         if(board[rowIndex][cellIndex] === "" && !winner){
             const newBoard = [...board];
-            newBoard[rowIndex][cellIndex] = player;
+            newBoard[rowIndex][cellIndex] = currentPlayer;
             SetBoard(newBoard);
-            SetPlayer(player === "X" ? "O" : "X");
+            setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
         }
     }
 
@@ -63,7 +66,7 @@ export default function Game(){
 
     const resetBoard = () => {
         SetBoard(initailBoard);
-        SetPlayer("X");
+        setCurrentPlayer("X");
         SetWinner("");
     }
 
@@ -78,7 +81,9 @@ export default function Game(){
 
     return (
         <View style={styles.container}>
-            <Text>Player {player}'s turn</Text>
+            {mode === Mode.SINGLEPLAYER && <Text>{player1Name} vs {difficulty} Bot </Text>}
+            {mode === Mode.TWOPLAYER && <Text>{player1Name} vs {player2Name}</Text>}
+            <Text>Player {currentPlayer}'s turn</Text>
             <Board onPress={handlePress} board={board} />
         </View>
     )
