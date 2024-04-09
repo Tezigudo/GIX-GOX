@@ -10,12 +10,12 @@ export default function ChooseDifficulty({ navigation }) {
       <Text>Choose Difficulty</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.EASY })}>
+        onPress={()=>navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.EASY })}>
         <Text style={styles.buttonText}>Easy</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.HARD })}>
+        onPress={()=> navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.HARD })}>
         <Text style={styles.buttonText}>Hard</Text>
       </TouchableOpacity>
     </View>
