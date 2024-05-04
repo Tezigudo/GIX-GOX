@@ -1,24 +1,47 @@
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Mode } from "../enum/Mode";
 
 export default function PlayerNames({navigation, route}) {
+  const { mode, difficulty } = route.params;
     const [player1Name, setPlayer1Name] = useState("");
     const [player2Name, setPlayer2Name] = useState("");
 
 
     const handleStartGame = () => {
+      if (mode === Mode.SINGLEPLAYER) {
         navigation.navigate("Game", {
-          mode: route.params.mode,
+          mode,
           player1Name,
-          player2Name,
+          player2Name: "Bot",
+          difficulty: difficulty
         });
-      };
+      } else {
+        navigation.navigate("Game", {
+          mode,
+          player1Name,
+          player2Name
+        });
+      }
+    };
 
     return (
       <View style={styles.container}>
         <Text style={styles.title}>GIX GOK</Text>
-        <TextInput style={styles.input} value={player1Name} placeholder="Player 1" onChangeText={setPlayer1Name}/>
-        <TextInput style={styles.input} value={player2Name} placeholder="Player 2" onChangeText={setPlayer2Name}/>
+        <TextInput
+        style={styles.input}
+        value={player1Name}
+        placeholder="Player 1"
+        onChangeText={setPlayer1Name}
+      />
+      {mode === Mode.TWOPLAYER && (
+        <TextInput
+          style={styles.input}
+          value={player2Name}
+          placeholder="Player 2"
+          onChangeText={setPlayer2Name}
+        />
+      )}
         <TouchableOpacity style={styles.button} onPress={handleStartGame}>
           <Text style={styles.buttonText}>Start</Text>
         </TouchableOpacity>

@@ -3,19 +3,19 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Mode } from "../enum/Mode";
 import { Difficulty } from "../enum/Difficulty";
 
-export default function ChooseDifficulty({ navigation }) {
+export default function ChooseDifficulty({ navigation, route }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GIX GOK</Text>
       <Text>Choose Difficulty</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={()=>navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.EASY })}>
+        onPress={()=>navigation.navigate("PlayerNames", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.EASY })}>
         <Text style={styles.buttonText}>Easy</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={()=> navigation.navigate("Game", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.HARD })}>
+        onPress={()=> navigation.navigate("PlayerNames", { mode: Mode.SINGLEPLAYER, difficulty: Difficulty.HARD })}>
         <Text style={styles.buttonText}>Hard</Text>
       </TouchableOpacity>
     </View>

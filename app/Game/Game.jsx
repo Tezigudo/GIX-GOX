@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { Board } from "./Board";
 import { Mode } from "../enum/Mode";
+import { getRandomMove, getBestMove } from "./AI";
+import { Difficulty } from "../enum/Difficulty";
+
 
 export default function Game({route}){
     const { mode, difficulty, player1Name, player2Name } = route.params;
@@ -20,6 +23,15 @@ export default function Game({route}){
         checkWinner();
         checkTie();
     }, [board]);
+
+    useEffect(() => {
+        if (mode === Mode.SINGLEPLAYER && currentPlayer === "O") {
+          const delay = setTimeout(() => {
+            makeComputerMove();
+          }, 500);
+          return () => clearTimeout(delay);
+        }
+      }, [currentPlayer]);
 
     const handlePress = (rowIndex, cellIndex) => {
         if(board[rowIndex][cellIndex] === "" && !winner){
@@ -69,6 +81,36 @@ export default function Game({route}){
         setCurrentPlayer("X");
         SetWinner("");
     }
+
+    const makeComputerMove = () => {
+        if (!winner && currentPlayer === "O") {
+        if (difficulty === Difficulty.EASY) {
+          makeRandomMove();
+        } else if (difficulty === Difficulty.HARD) {
+          makeMinimaxMove();
+        }
+      }};
+    
+      const makeRandomMove = () => {
+        const emptyCells = [];
+        board.forEach((row, rowIndex) => {
+          row.forEach((cell, cellIndex) => {
+            if (cell === "") {
+              emptyCells.push({ rowIndex, cellIndex });
+            }
+          });
+        });
+
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const { rowIndex, cellIndex } = emptyCells[randomIndex];
+        handlePress(rowIndex, cellIndex);
+      };
+
+      const makeMinimaxMove = () => {
+        const bestMove = getBestMove(board, "O");
+        handlePress(bestMove.rowIndex, bestMove.cellIndex);
+      };
+    
 
     useEffect(() => {
         if(winner){
