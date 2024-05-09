@@ -101,6 +101,10 @@ export default function Game({route}){
           });
         });
 
+        if(!emptyCells.length){
+            return;
+        }
+
         const randomIndex = Math.floor(Math.random() * emptyCells.length);
         const { rowIndex, cellIndex } = emptyCells[randomIndex];
         handlePress(rowIndex, cellIndex);

@@ -8,11 +8,11 @@ export default function MainMenu({navigation}) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("GameMode")}>
         <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
-      <Link href="/_sitemap" asChild>
+      {/* <Link href="/_sitemap" asChild>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Debug</Text>
       </TouchableOpacity>
-      </Link>
+      </Link> */}
     </View>
   );
 
